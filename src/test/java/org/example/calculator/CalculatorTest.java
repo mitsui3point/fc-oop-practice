@@ -1,5 +1,6 @@
 package org.example.calculator;
 
+import org.example.calculator.vo.PositiveNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -24,7 +25,7 @@ public class CalculatorTest {
     @MethodSource("operandSource")
     void operation(int operand1, String operation, int operand2, int result) {
         //when
-        int actual = new Calculator().calculate(operand1, operation, operand2);
+        int actual = new Calculator().calculate(new PositiveNumber(operand1), operation, new PositiveNumber(operand2));
         //then
         assertThat(actual).isEqualTo(result);
     }
@@ -35,7 +36,7 @@ public class CalculatorTest {
     void operationFail(int operand1, String operation, int operand2, String errorMessage) {
         assertThatCode(() -> {
             //when
-            new Calculator().calculate(operand1, operation, operand2);
+            new Calculator().calculate(new PositiveNumber(operand1), operation, new PositiveNumber(operand2));
         })
                 //then
                 .isInstanceOf(IllegalArgumentException.class)

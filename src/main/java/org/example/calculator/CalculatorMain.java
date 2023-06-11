@@ -1,20 +1,20 @@
 package org.example.calculator;
 
+import org.example.calculator.ui.InputUI;
+import org.example.calculator.ui.OutputUI;
+
 import java.util.Scanner;
 
 public class CalculatorMain {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("숫자를 입력하세요.");
-        int operand1 = sc.nextInt();
+        InputUI inputUI = new InputUI(new Scanner(System.in));
+        OutputUI outputUI = new OutputUI(new Calculator());
 
-        System.out.println("연산자를 입력하세요.");
-        String operator = String.valueOf(sc.next().charAt(0));
+        int operand1 = inputUI.getOperand();
+        String operator = inputUI.getOperation();
+        int operand2 = inputUI.getOperand();
 
-        System.out.println("숫자를 입력하세요.");
-        int operand2 = sc.nextInt();
-
-        int result = new Calculator().calculate(operand1, operator, operand2);
-        System.out.println(result);
+        outputUI.printResult(operand1, operator, operand2);
     }
+
 }
