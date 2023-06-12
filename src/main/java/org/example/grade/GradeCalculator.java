@@ -15,12 +15,12 @@ public class GradeCalculator {
 
         double multiplyCreditAndGradeNumber = this.courses
                 .stream()
-                .mapToDouble(o -> o.getCredit() * o.getGradeToNumber())// TODO Refactoring : 학점수 * 교과목 평점
+                .mapToDouble(Course::multiplyCreditAndCourseGrade)
                 .sum();
 
         int totalCredit = this.courses
                 .stream()
-                .mapToInt(o -> o.getCredit())
+                .mapToInt(Course::getCredit)
                 .sum();
 
         return multiplyCreditAndGradeNumber / totalCredit;
