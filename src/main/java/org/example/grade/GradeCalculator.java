@@ -5,23 +5,17 @@ import org.example.grade.domain.Course;
 import java.util.List;
 
 public class GradeCalculator {
-    private final List<Course> courses;
+    private final Courses courses;
 
     public GradeCalculator(List<Course> courses) {
-        this.courses = courses;
+        this.courses = new Courses(courses);
     }
 
     public double calculate() {
 
-        double multiplyCreditAndGradeNumber = this.courses
-                .stream()
-                .mapToDouble(Course::multiplyCreditAndCourseGrade)
-                .sum();
+        double multiplyCreditAndGradeNumber = this.courses.multiplyCreditAndGradeNumber();
 
-        int totalCredit = this.courses
-                .stream()
-                .mapToInt(Course::getCredit)
-                .sum();
+        int totalCredit = this.courses.totalCredit();
 
         return multiplyCreditAndGradeNumber / totalCredit;
     }
