@@ -1,8 +1,6 @@
 package org.example.customer.domain;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.regex.Pattern;
 
 public class Menu {
     private final List<MenuItem> menuItems;

@@ -2,7 +2,6 @@ package org.example.customer;
 
 import org.example.customer.domain.Cook;
 import org.example.customer.domain.MenuItem;
-import org.example.customer.domain.MenuItemTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
